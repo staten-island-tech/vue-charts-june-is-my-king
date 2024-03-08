@@ -1,18 +1,17 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <h1>HIV by Race and Borough!</h1>
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/">Race Analytics</RouterLink>
+        <RouterLink to="/about">Borough Analytics</RouterLink>
       </nav>
     </div>
   </header>
@@ -65,12 +64,6 @@ nav a:first-of-type {
 
   .logo {
     margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
   }
 
   nav {
