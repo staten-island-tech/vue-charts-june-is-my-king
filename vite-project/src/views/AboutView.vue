@@ -10,6 +10,9 @@ import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, Li
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
+
+
+
 export default {
   name: 'BarChart',
   components: { Bar },
@@ -21,7 +24,7 @@ export default {
     this.loaded = false
 
     try {
-      const { userlist } = await fetch('/api/userlist')
+      const { userlist } = await fetch('https://data.cityofnewyork.us/resource/ykvb-493p.json')
       this.chartdata = userlist
 
       this.loaded = true
@@ -30,4 +33,4 @@ export default {
     }
   }
 }
-</script>
+
