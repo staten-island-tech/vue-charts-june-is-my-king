@@ -5,29 +5,25 @@
 </template>
 
 <script>
-import { Pie } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+// import { Pie } from 'vue-chartjs'
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
-export default {
-  name: 'PieChart',
-  components: { Pie },
-  data: () => ({
-    loaded: false,
-    chartData: null
-  }),
-  async mounted () {
-    this.loaded = false
+export default{
+  let :dataa = [],
+  const :url= "https://data.cityofnewyork.us/resource/ykvb-493p.json",
 
-    try {
-      const { userlist } = await fetch('/api/userlist')
-      this.chartdata = userlist
-
-      this.loaded = true
-    } catch (e) {
-      console.error(e)
-    }
+async mounted(url) {
+  try {
+    const response = await fetch(url);
+    const dataa = await response.json();
+    insert(dataa);
+    console.log("Data:", dataa[0]);
+    getData(dataa);
+  } catch (error) {
+    console.log(error);
   }
+}
+
+
 }
 </script>
