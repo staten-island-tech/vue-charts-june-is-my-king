@@ -6,31 +6,28 @@
 
 <script>
 import { Bar } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
-
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
-
-
-
 
 export default {
-  name: 'BarChart',
-  components: { Bar },
-  data: () => ({
-    loaded: false,
-    chartData: null
-  }),
-  async mounted () {
-    this.loaded = false
+  name: 'bar',
+  props: {
+    msg: String
+  },
 
-    try {
-      const { userlist } = await fetch('https://data.cityofnewyork.us/resource/ykvb-493p.json')
-      this.chartdata = userlist
 
-      this.loaded = true
-    } catch (e) {
-      console.error(e)
+  methods: {
+    fetchData() {
+      fetch('https://data.cityofnewyork.us/resource/s6eb-zqd5.json', {
+        method: 'GET',
+      })
+        .then(response => {
+          response.json().then(res => console.log(res));
+        })
+        .catch(err => {
+          console.error(err);
+        });
     }
   }
-}
+};
 
+
+</script>
