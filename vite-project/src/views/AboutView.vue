@@ -13,9 +13,9 @@ export default {
     msg: String
   },
 
-
+mounted:this.fetchdata(),
   methods: {
-    fetchData() {
+    async fetchdata() {
       fetch('https://data.cityofnewyork.us/resource/s6eb-zqd5.json', {
         method: 'GET',
       })
@@ -27,7 +27,12 @@ export default {
         });
     }
   }
+
+  
+
 };
+
+
 
 
 </script>
