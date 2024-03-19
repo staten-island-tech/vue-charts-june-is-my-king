@@ -13,7 +13,7 @@ export default {
     msg: String
   },
 
-mounted:this.fetchdata(),
+mounted: function(){this.fetchdata()},
   methods: {
     async fetchdata() {
       fetch('https://data.cityofnewyork.us/resource/s6eb-zqd5.json', {
