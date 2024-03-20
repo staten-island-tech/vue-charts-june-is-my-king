@@ -16,7 +16,7 @@ export default {
 mounted: function(){this.fetchdata()},
   methods: {
     async fetchdata() {
-      fetch('https://data.cityofnewyork.us/resource/s6eb-zqd5.json', {
+      fetch('https://data.cityofnewyork.us/resource/ykvb-493p.json', {
         method: 'GET',
       })
         .then(response => {
