@@ -29,22 +29,4 @@ export default{
 }
 
 
-// export default{
-//   let :dataa = [],
-//   const :url= "https://data.cityofnewyork.us/resource/s6eb-zqd5.json",
-
-// async mounted(url) {
-//   try {
-//     const response = await fetch(url);
-//     const dataa = await response.json();
-//     insert(dataa);
-//     console.log("Data:", dataa[0]);
-//     getData(dataa);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-
-// }
-// </script>
+</script>
