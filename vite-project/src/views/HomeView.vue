@@ -8,14 +8,14 @@
 <script>
 
 // import { Pie } from 'vue-chartjs'
-export const data = {
-  labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
-  datasets: [
-    {
-      backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-    }
-  ]
-}
+// export const data = {
+//   labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
+//   datasets: [
+//     {
+//       backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+//     }
+//   ]
+// }
 import PieChart from './PieChart.js'
 export default {
   name: 'piechart',
