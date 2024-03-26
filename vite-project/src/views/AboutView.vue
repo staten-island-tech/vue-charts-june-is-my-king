@@ -40,7 +40,8 @@ export default {
       loaded: false,
       chartData: {
         labels: [],
-        datasets: [{ data: [7] }]
+        backgroundColor: '#daefdc',
+        datasets: [{ data: [1] }]
       }
     }
   },
