@@ -1,40 +1,45 @@
 <template>
-  <Pie v-if="loaded" id="my-chart-id" :data="chartData"/>
+  <div class="container">
+  <Pie v-if="loaded" class="pie" id="my-chart-id" :data="chartData" :options="chartopt"/>
 
   <canvas id="piechart" width="400" height="400"></canvas>
+</div>
 </template>
 
 <script>
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Pie } from 'vue-chartjs'
-import * as chartConfig from './chartConfig.js'
+// import * as chartConfig from './chartConfig.js'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
-export const data = {
-  labels: [],
-  datasets: [
-    {
-      backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-      chartData: [40, 20, 80, 10]
-    }
-  ]
-}
+// export const data = {
+//   labels: [],
+//   datasets: [
+//     {
+//       backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+//       chartData: [40, 20, 80, 10]
+//     }
+//   ]
+// }
 
-export const options = {
-  responsive: true,
-  maintainAspectRatio: false
-}
+// export const options = {
+//   responsive: true,
+//   maintainAspectRatio: false
+// }
 
 export default{
   name: 'PieChart',
   components: { Pie },
-  data(){
+  data:() =>{
     return{
       test:null,
       loaded: false,
       chartData: {
-        label:[],
-        datasets: [{ data: [7]}]
+        label:[''],
+        datasets: [{ 
+          backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+          
+        }]
       }
     }
   },
@@ -63,3 +68,18 @@ export default{
   }
 }
 </script>
+
+<style scoped>
+.pie{
+  height: 500px;
+  width: 500px;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: center;
+}
+</style>
