@@ -1,6 +1,6 @@
 <template>
 
-  <Bar v-if="loaded" id="my-chart-id" :data="chartData" />
+  <Bar v-if="loaded" id="my-chart-id" :data="chartData" class="barchart"/>
 
   <canvas id="barchart" width="400" height="400"></canvas>
 
@@ -13,21 +13,6 @@ import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, Li
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
-// export default {
-//   name: 'BarChart',
-//   components: { Bar },
-//   data() {
-//     return {
-//       chartData: {
-//         labels: [ 'January', 'February', 'March' ],
-//         datasets: [ { data: [40, 20, 12] } ]
-//       },
-//       chartOptions: {
-//         responsive: true
-//       }
-//     }
-//   }
-// }
 
 
 
@@ -40,8 +25,7 @@ export default {
       loaded: false,
       chartData: {
         labels: [],
-        backgroundColor: '#daefdc',
-        datasets: [{ data: [1] }]
+        datasets: [{}]
       }
     }
   },
@@ -92,3 +76,11 @@ export default {
 // },
 
 </script>
+
+<style scoped>
+
+.barchart {
+ align-items: center;
+}
+
+</style>
