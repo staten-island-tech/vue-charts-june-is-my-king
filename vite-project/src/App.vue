@@ -20,15 +20,15 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  margin-bottom: 180%;
+
+.wrapper {
   align-items: center;
+  margin-bottom: 880px;
+  margin-left: 100px;
 }
 
-
 nav {
-  font-size: 12px;
+  font-size: 20px;
   text-align: center;
   margin-top: 2rem;
 }
@@ -47,20 +47,6 @@ nav a:first-of-type {
   border: 0;
 }
 
-@media (min-width: 10px) {
-  header {
-    display: flex;
-  }
 
-
-  nav {
-
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
 
 </style>
