@@ -1,44 +1,31 @@
 <template>
   <div class="container">
-  <Pie v-if="loaded" class="pie" id="my-chart-id" :data="chartData" :options="chartopt"/>
+  <Pie v-if="loaded" class="pie" id="my-chart-id" :data="chartData" />
 
-  <canvas id="piechart" width="400" height="400"></canvas>
+ 
 </div>
 </template>
 
 <script>
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Pie } from 'vue-chartjs'
-// import * as chartConfig from './chartConfig.js'
+
 
 ChartJS.register(ArcElement, Tooltip, Legend)
-// export const data = {
-//   labels: [],
-//   datasets: [
-//     {
-//       backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-//       chartData: [40, 20, 80, 10]
-//     }
-//   ]
-// }
 
-// export const options = {
-//   responsive: true,
-//   maintainAspectRatio: false
-// }
 
 export default{
   name: 'PieChart',
   components: { Pie },
-  data:() =>{
+  data() {
     return{
-      test:null,
+      
       loaded: false,
       chartData: {
-        label:[''],
+        label:[],
         datasets: [{ 
           backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-          
+          data:[]
         }]
       }
     }
@@ -46,12 +33,13 @@ export default{
   methods: {
     getData: async function(){
       try{
-        const res = await fetch('https://data.cityofnewyork.us/resource/ykvb-493p.json')
+        const res = await fetch('https://data.cityofnewyork.us/resource/ykvb-493p.json?borough=All&sex=All&neighborhood=All&year=2021')
         const data = await res.json()
         this.test = data
         data.forEach((dataPoint)=>{
-          this.chartData.labels.push(dataPoint.year)
+          this.chartData.label.push(dataPoint.race)
         })
+   
       }catch(e){
         console.error(e)
       }
@@ -61,11 +49,14 @@ export default{
   mounted:
   async function(){
     await this.getData()
-    this.loaded = true
+    try {
+      this.loaded = true
+    } catch (error) {
+      console.log(error)
+    }
+  
   },
-  chartData() {
-    return chartConfig
-  }
+
 }
 </script>
 
