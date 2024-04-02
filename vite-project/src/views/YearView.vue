@@ -1,11 +1,5 @@
 <template>
-  <<<<<<< HEAD:vite-project/src/views/AboutView.vue
-
   <Bar v-if="loaded" id="my-chart-id" :data="chartData" class="barchart" />
-
-  =======
-  <Bar v-if="loaded" id="my-chart-id" :data="chartData" class="barchart" />
-  >>>>>>> june:vite-project/src/views/YearView.vue
 </template>
 
 <script>
