@@ -2,7 +2,7 @@
 
   <Bar v-if="loaded" id="my-chart-id" :data="chartData" class="barchart" />
 
-  <canvas id="barchart" width="400" height="400"></canvas>
+
 
 </template>
 
@@ -25,8 +25,11 @@ export default {
       loaded: false,
       chartData: {
         labels: [],
-        label: 'Diagnoses',
-        datasets: [{}],
+        datasets: [{
+          label: 'Diagnoses',
+          backgroundColor: '#B0413E',
+          data: [],
+        }],
       }
     }
   },
@@ -38,41 +41,29 @@ export default {
         this.test = data
         data.forEach((dataPoint) => {
           this.chartData.labels.push(dataPoint.year)
+          const diagnosesValues = data.map(dataPoint => dataPoint.hiv_diagnoses_num)
+        this.chartData.datasets[0].data = diagnosesValues
         })
 
       } catch (e) {
         console.error(e)
       }
-    }
+    },
+
   },
 
-  getNumbers: async function () {
-    try {
-      const diagnosesvalue = await fetch('https://data.cityofnewyork.us/resource/ykvb-493p.json?borough=All&race=All&neighborhood=All&sex=All')
-      this.chartData.datasets = diagnosesvalue
+  mounted:
+    async function () {
+      await this.getData()
+      this.loaded = true
     }
-
-  catch (e) {
-    console.error(e)
   }
 
-},
-
-
-
-
-mounted:
-async function () {
-  await this.getData()
-  this.loaded = true
-}
 
 
 
 
 
-
-}
 
 
 // mounted: function () { this.fetchdata() },
@@ -95,6 +86,6 @@ async function () {
 
 <style scoped>
 .barchart {
-  align-items: center;
+  padding-top: 0%;
 }
 </style>
