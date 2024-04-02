@@ -1,33 +1,20 @@
 <template>
-
-  <Bar v-if="loaded" id="my-chart-id" :data="chartData" />
-
-  <canvas id="barchart" width="400" height="400"></canvas>
-
+  <Bar v-if="loaded" id="my-chart-id" :data="chartData" class="barchart" />
 </template>
-
 
 <script>
 import { Bar } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale
+} from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
-
-// export default {
-//   name: 'BarChart',
-//   components: { Bar },
-//   data() {
-//     return {
-//       chartData: {
-//         labels: [ 'January', 'February', 'March' ],
-//         datasets: [ { data: [40, 20, 12] } ]
-//       },
-//       chartOptions: {
-//         responsive: true
-//       }
-//     }
-//   }
-// }
 
 export default {
   name: 'BarChart',
@@ -38,39 +25,40 @@ export default {
       loaded: false,
       chartData: {
         labels: [],
-        datasets: [{ data: [7] }]
+        datasets: [
+          {
+            label: 'Diagnoses',
+            backgroundColor: '#B0413E',
+            data: []
+          }
+        ]
       }
     }
   },
   methods: {
     getData: async function () {
       try {
-        const res = await fetch('https://data.cityofnewyork.us/resource/ykvb-493p.json?borough=All&race=All&neighborhood=All&sex=All')
+        const res = await fetch(
+          'https://data.cityofnewyork.us/resource/ykvb-493p.json?borough=All&race=All&neighborhood=All&sex=All'
+        )
         const data = await res.json()
         this.test = data
-        data.forEach((dataPoint)=>{
+        data.forEach((dataPoint) => {
           this.chartData.labels.push(dataPoint.year)
+          const diagnosesValues = data.map((dataPoint) => dataPoint.hiv_diagnoses_num)
+          this.chartData.datasets[0].data = diagnosesValues
         })
-
-
       } catch (e) {
         console.error(e)
       }
     }
   },
-  mounted: 
-    async function() {
-      await this.getData()
-      this.loaded = true
-    }
 
-  
-
-
-
-
+  mounted: async function () {
+    await this.getData()
+    this.loaded = true
+  }
 }
-
 
 // mounted: function () { this.fetchdata() },
 // methods: {
@@ -87,5 +75,10 @@ export default {
 //       });
 //   }
 // },
-
 </script>
+
+<style scoped>
+.barchart {
+  padding-top: 0%;
+}
+</style>

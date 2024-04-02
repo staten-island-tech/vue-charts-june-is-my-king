@@ -1,17 +1,16 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-
 </script>
 
 <template>
   <header>
-
     <div class="wrapper">
-      <h1>HIV Diagnoses by Race and Borough</h1>
+      <h1>HIV Diagnoses by Race and Year</h1>
 
       <nav>
-        <RouterLink to="/">Race</RouterLink>
-        <RouterLink to="/about">Year</RouterLink>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/race">Race</RouterLink>
+        <RouterLink to="/year">Year</RouterLink>
       </nav>
     </div>
   </header>
@@ -25,7 +24,6 @@ header {
   margin-bottom: 180%;
   align-items: center;
 }
-
 
 nav {
   font-size: 12px;
@@ -52,9 +50,7 @@ nav a:first-of-type {
     display: flex;
   }
 
-
   nav {
-
     margin-left: -1rem;
     font-size: 1rem;
 
@@ -62,5 +58,4 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
-
 </style>
